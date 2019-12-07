@@ -39,10 +39,9 @@ public class MTWriter extends Thread {
         //进行初步的划分运算
         if(threadNumbers>32)threadNumbers=32;
         int blocksize=2014*512*256*4/threadNumbers;
-        int LastBlockSize=2014*512*256*4%threadNumbers;
         int startPosition=0;
-
         //开始执行：
+
         com.dataproduce.Producer producer=new com.dataproduce.Producer();
         long startTime =  System.currentTimeMillis();
         producer.produce();

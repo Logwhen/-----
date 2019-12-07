@@ -6,9 +6,31 @@ import java.io.DataOutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class Producer {
     public byte[]Data =new byte[2014*512*256*4];
+    public ArrayList<byte[]> data=new ArrayList<byte[]>();
+    public  List<byte[]> produceData()
+    {
+        for(int i=0;i<2014*512;i++)
+        {
+            data.add(new byte[256*4]);
+        }
+        for(int i=0;i<2014*512;i++)
+        {
+            int startPosition=0;
+            for(int j=0;j<256;j++)
+            {
+
+                byte[] bytes=new byte[4];
+                bytes=intToBytes(i);
+                System.arraycopy(bytes,0, data.get(i),startPosition,4);
+                startPosition+=4;
+            }
+        }
+        return data;
+    }
 
 public int produce()
 {
